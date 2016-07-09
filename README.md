@@ -1,2 +1,2 @@
 # laravel-importance
-Laravel Important code are include here.
+Laravel Important code are included here.
