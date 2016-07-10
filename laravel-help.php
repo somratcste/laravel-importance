@@ -37,6 +37,7 @@ Validation:
 	</div>
 @endif
 
+<?php 
 public function postQuote(Request $request)
 {
 	$this->validate($request , [
@@ -61,7 +62,7 @@ public function postQuote(Request $request)
 		'success' => 'Quote Saved.'
 	]);
 }
-
+?>
 
 Segment :
 =======================================
@@ -96,4 +97,25 @@ css and js connection and master blade:
 
 ======================================
 
+Route group :
+=====================================
+<?php
+Route::group(['middleware' => ['web']] , function() {
 
+	Route::get('/{author?}' , [
+	'uses' => 'HomeController@getHome',
+	'as' => 'home'
+	]);
+
+	Route::post('/new' , [
+	'uses' => 'QuoteController@postQuote',
+	'as' => 'create'
+	]);
+
+	Route::get('/delete/{quote_id}' , [
+	'uses' => 'QuoteController@getDeleteQuote',
+	'as' => 'delete'
+	]);
+});
+?>
+=======================================
