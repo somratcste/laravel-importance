@@ -136,3 +136,10 @@ class AdminController extends Controller
 }
 ?>
 ====================================
+
+Request Facade :
+====================================
+<?php
+use Illuminate\Http\Request;
+?>
+====================================
