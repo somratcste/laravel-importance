@@ -119,3 +119,20 @@ Route::group(['middleware' => ['web']] , function() {
 });
 ?>
 =======================================
+
+Controller :
+=====================================
+<?php
+
+namespace App\Http\Controllers;
+
+
+class AdminController extends Controller 
+{
+	public function getLogin()
+	{
+		return view('admin.login');
+	}
+}
+?>
+====================================
