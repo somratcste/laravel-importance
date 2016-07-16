@@ -1,3 +1,10 @@
+Download or install Laravel :
+================================
+
+composer create-project --prefer-dist laravel/laravel blog
+
+================================
+
 Pagination : 
 =================================
 <div class="pagination1">
@@ -157,7 +164,7 @@ form :
 		<input type="password" name="password" id="password" placeholder="Your E-Mail">
 	</div>
 	
-	<button type="submit" class="btn btn-primary">Submti Quote</button>
+	<button type="submit" class="btn btn-primary">Submti</button>
 	<input type="hidden" name="_token" value="{{Session::token()}}">
 </form>
 
@@ -184,3 +191,19 @@ class Admin extends Model implements \Illuminate\Contracts\Auth\Authenticatable
 
 ?>
 ======================================
+
+Session and with message : 
+=====================================
+
+<?php
+@if(session('fail'))
+	<div class="alert alert-danger">
+		{{session('fail')}}
+	</div>
+@endif
+
+return redirect('admin/login')->with('fail' , 'Could not be login');
+
+?>
+
+=====================================
