@@ -175,6 +175,7 @@ Auth Facade :
 =======================================
 <?php
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Auth\Authenticatable;
 ?>
 
 <?php
