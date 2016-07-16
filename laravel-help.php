@@ -207,3 +207,14 @@ return redirect('admin/login')->with('fail' , 'Could not be login');
 ?>
 
 =====================================
+
+div center :
+=====================================
+.center {
+    margin: auto;
+    width: 50%;
+    border: 3px solid green;
+    padding: 10px;
+}
+
+=====================================
