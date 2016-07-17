@@ -7,28 +7,18 @@ composer create-project --prefer-dist laravel/laravel blog
 
 Pagination : 
 =================================
-<div class="pagination1">
-	@if($quotes->currentPage() !== 1)
-		<a href="{{ $quotes->previousPageUrl() }}"><span class="fa fa-caret-left"><</span></a>
-	@endif
-	@if($quotes->currentPage() !== $quotes->lastPage() && $quotes->hasPages())
-		<a href="{{ $quotes->nextPageUrl() }}"><span class="fa fa-caret-right">></span></a>
-	@endif
-</div>
-
-.pagination1 {
-	font-size: 20px;
-}
-
-.pagination1 a {
-	color :black;
-	text-decoration: none;
-}
-
-.pagination1 a:hover , 
-.pagination1 a:active {
-	color: #ccc;
-}
+<section>
+	<nav>
+		<ul class="pager">
+		  	@if($posts->currentPage() !== 1)
+		    	<li class="previous"><a href="{{ $posts->previousPageUrl() }}"><span aria-hidden="true">&larr;</span> Older</a></li>
+		    @endif
+		    @if($posts->currentPage() !== $posts->lastPage() && $posts->hasPages())
+		    	<li class="next"><a href="{{ $posts->nextPageUrl() }}">Newer <span aria-hidden="true">&rarr;</span></a></li>
+		    @endif
+		</ul>
+	</nav>
+</section>
 
 ===================================
 
