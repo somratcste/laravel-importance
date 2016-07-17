@@ -137,6 +137,19 @@ Route::get('/admin' , function() {
 ?>
 ======================================
 
+Route prefix : 
+======================================
+<?php
+Route::group('/admin' , [
+        'prefix' = '/admin',
+    ] , function() {
+        Route::get('/' , [
+            'uses' => 'AdminController@getIndex',
+            'as' => 'admin.index'
+        ]);
+    });
+?>
+
 Controller :
 =====================================
 <?php
