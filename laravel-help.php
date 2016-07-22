@@ -263,5 +263,17 @@ public function shortenText($text , $words_count)
 Edit post value : 
 =======================================
 <?php 
-value="{{ Request::old('title') ? Request::old('title') : isset($post) ? $post->title : '' }} 
+value="{{ Request::old('title') ? Request::old('title') : isset($post) ? $post->title : '' }} "
 ?>
+
+========================================
+
+if not post controller function : 
+========================================
+<?php
+if(!$post){
+			return redirect()->route('blog.index')->with(['fail' => 'Page not found !']);
+		}
+?>
+
+=======================================
