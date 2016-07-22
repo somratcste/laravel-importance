@@ -259,3 +259,9 @@ public function shortenText($text , $words_count)
 ?>
 
 =======================================
+
+Edit post value : 
+=======================================
+<?php 
+value="{{ Request::old('title') ? Request::old('title') : isset($post) ? $post->title : '' }} 
+?>
