@@ -165,7 +165,7 @@ use Illuminate\Http\Request;
 
 form :
 ====================================
-<?php
+
 <form method="post" action="{{ route('admin.login') }}">
 	<div class="input-group">
 		<label for="name">Your Name : </label>
@@ -180,7 +180,7 @@ form :
 	<input type="hidden" name="_token" value="{{Session::token()}}">
 </form>
 
-?>
+
 =======================================
 
 Auth Facade :
@@ -334,4 +334,27 @@ public function postUpdatePost(Request $request)
 	}
 ?>
 
+<input type="hidden" name="_token" value="{{Session::token()}}">
+<input type="hidden" name="category_id" value="{{ $category->id}}">
+
 ==========================================
+
+Delete Post Controller function : 
+=========================================
+<?php 
+public function getDeletePost($post_id)
+	{
+		$post = Post::find($post_id);
+		if(!$post){
+			return redirect()->route('blog.index')->with(['fail' => 'Page not found !']);
+		}
+		$post->delete();
+		return redirect()->route('admin.index')->with(['success' => 'Post Deleted Successfully !']);
+
+	}
+
+?>
+
+<input type="hidden" name="category_id" value="{{ $category->id}}">
+
+=========================================
