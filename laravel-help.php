@@ -358,3 +358,29 @@ public function getDeleteCategory(Request $request)
 <input type="hidden" name="category_id" value="{{ $category->id}}">
 
 =========================================
+
+Delete post withoug modal : 
+=========================================
+<a class="delete" href="{{ route('admin.blog.post.delete' , ['post_id' => $post->id ]) }}">Delete</a>
+
+<?php 
+
+Route::get('/blog/post/{post_id}/delete' , [
+    'uses' => 'PostController@getDeletePost',
+    'as' => 'admin.blog.post.delete'
+]);
+
+public function getDeletePost($post_id)
+	{
+		$post = Post::find($post_id);
+		if(!$post){
+			return redirect()->route('blog.index')->with(['fail' => 'Page not found !']);
+		}
+		$post->delete();
+		return redirect()->route('admin.index')->with(['success' => 'Post Deleted Successfully !']);
+
+	}
+
+?>
+
+============================================
