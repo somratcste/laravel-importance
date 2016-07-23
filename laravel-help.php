@@ -339,17 +339,17 @@ public function postUpdatePost(Request $request)
 
 ==========================================
 
-Delete Post Controller function : 
+Delete Post Controller function Using modal  : 
 =========================================
 <?php 
-public function getDeletePost($post_id)
+public function getDeleteCategory(Request $request)
 	{
-		$post = Post::find($post_id);
-		if(!$post){
+		$category = Category::find($request['category_id']);
+		if(!$category){
 			return redirect()->route('blog.index')->with(['fail' => 'Page not found !']);
 		}
-		$post->delete();
-		return redirect()->route('admin.index')->with(['success' => 'Post Deleted Successfully !']);
+		$category->delete();
+		return redirect()->route('admin.blog.categories')->with(['success' => 'Category Deleted Successfully !']);
 
 	}
 
