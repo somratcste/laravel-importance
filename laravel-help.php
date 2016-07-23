@@ -308,4 +308,30 @@ Using Modal :
   </div>
 </div>
 
-===============================================
+============================================
+
+Update Post Controller function : 
+============================================
+<?php 
+public function postUpdatePost(Request $request) 
+	{
+		$this->validate($request , [
+			'title' => 'required|max:120' ,
+			'author' => 'required|max:80' ,
+			'body' => 'required'
+		]);
+
+		$post = Post::find($request['post_id']);
+		$post->title = $request['title'];
+		$post->author = $request['author'];
+		$post->body = $request['body'];
+		$post->update();
+
+		//categories
+		
+		return redirect()->route('admin.index')->with(['success' => 'Post Updated Successfully ! ']);
+
+	}
+?>
+
+==========================================
