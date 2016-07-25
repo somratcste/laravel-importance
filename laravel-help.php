@@ -392,3 +392,13 @@ public function getDeletePost($post_id)
 
 ============================================
 
+Join and Distinct : 
+===========================================
+<?php 
+$categories = DB::table('categories')
+                    ->join('posts' , 'categories.id' , '=' , 'posts.category_id')
+                    ->select('categories.name')
+                    ->distinct()
+                    ->get();
+?>
+============================================
