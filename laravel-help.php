@@ -63,13 +63,20 @@ public function postQuote(Request $request)
 
 Segment :
 =======================================
-
+<?php
 @if(Session::has('success'))
 	<div class="alert alert-success">
 		{{Session::get('success')}}
 	</div>
 @endif
 
+@if(!empty(Request::Segment(1)))
+	<section class="filter-bar">
+		A filter has been set ! <a href="{{ route('home') }}">Show All Quotes</a>
+	</section>
+@endif
+
+?>
 css and js connection and master blade:
 ========================================
 
@@ -384,3 +391,4 @@ public function getDeletePost($post_id)
 ?>
 
 ============================================
+
