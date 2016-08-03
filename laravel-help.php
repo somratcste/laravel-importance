@@ -402,3 +402,27 @@ $categories = DB::table('categories')
                     ->get();
 ?>
 ============================================
+
+Mobile Number Validation : 
+===========================================
+<div class="form-group">
+  <label class="col-sm-2 control-label">Mobile Number</label> 
+  <div class="col-sm-8">
+    <input class="form-control" type="tel" pattern="^\d{11}$" required name="mobile" placeholder="(format: xxxxxxxxxxx)" name="mobileNumber">
+  </div>
+</div>
+
+=========================================
+
+upload file / image : 
+=========================================
+<?php 
+if(Input::hasFile('image')){
+    $file = Input::file('image');
+    $file->move(public_path(). '/',$file->getClientOriginalName());
+
+    $doctor->image = $file->getClientOriginalName();
+    $doctor->size = $file->getClientsize();
+    $doctor->type = $file->getClientMimeType();
+}
+?>
