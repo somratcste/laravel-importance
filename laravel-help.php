@@ -270,7 +270,7 @@ public function shortenText($text , $words_count)
 Edit post value : 
 =======================================
 <?php 
-value="{{ Request::old('title') ? Request::old('title') : isset($post) ? $post->title : '' }} "
+value="{{ Request::old('title') ? Request::old('title') : isset($post) ? $post->title : '' }}"
 ?>
 
 ========================================
@@ -487,3 +487,58 @@ checked or selected :
 @endforeach
 ?>
 ====================================
+change timezone : 
+====================================
+<?php 
+date_default_timezone_set("Asia/Dhaka");
+?>
+
+date difference now : 
+====================================
+<?php 
+date_default_timezone_set("Asia/Dhaka"); 
+$patient = Patient::find($request->input('patient_id'));
+$created = new Carbon($patient->created_at);
+$now = Carbon::now();
+$difference = ($created->diff($now)->days < 1) ? 'today' : $created->diffForHumans($now);
+?>
+
+or 
+
+<?php 
+date_default_timezone_set("Asia/Dhaka"); 
+$patient = Patient::find($request->input('patient_id'));
+$created = new Carbon($patient->created_at);
+$difference = $created->diffInDays();
+?>
+====================================
+
+Google Material Design : 
+====================================
+<ul id="slide-out" class="side-nav fixed">
+    <li><div class="userView">
+      <img class="background" src="{{ asset('img/technology.jpg') }}">
+      <a href="#!user"><img class="circle" src="{{ asset('img/somrat.jpg') }}"></a>
+      <a href="#!name"><span class="black-text name">G. M. Nazmul Hossain</span></a>
+      <a href="#!email"><span class="black-text email">eng.nazmulhossain@gmail.com</span></a>
+    </div></li>
+    <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
+    <li><a href="#!">Second Link</a></li>
+    <li><div class="divider"></div></li>
+    <li><a class="subheader">Subheader</a></li>
+    <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+  </ul>
+  
+  <nav>
+    <div class="nav-wrapper">
+    <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+      <a href="#" class="brand-logo">Logo</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="sass.html">Sass</a></li>
+        <li><a href="badges.html">Components</a></li>
+        <li><a href="collapsible.html">JavaScript</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  ==================================
